@@ -10,6 +10,7 @@
         <activity
             android:name="com.sgehrman.androidwebwrapper.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
