@@ -13,13 +13,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.sgehrman.androidwebwrapper.util.SystemUiHider;
+import com.sgehrman.androidwebwrapper.util.SystemUiHiderBase;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  *
- * @see SystemUiHider
+ * @see SystemUiHiderBase
  */
 public class FullscreenActivity extends Activity {
   /**
@@ -40,15 +40,12 @@ public class FullscreenActivity extends Activity {
    */
   private static final boolean TOGGLE_ON_CLICK = true;
 
-  /**
-   * The flags to pass to {@link SystemUiHider#getInstance}.
-   */
-  private static final int HIDER_FLAGS = SystemUiHider.FLAG_HIDE_NAVIGATION;
+  private static final int HIDER_FLAGS = SystemUiHiderBase.FLAG_HIDE_NAVIGATION;
 
   /**
-   * The instance of the {@link SystemUiHider} for this activity.
+   * The instance of the {@link SystemUiHiderBase} for this activity.
    */
-  private SystemUiHider mSystemUiHider;
+  private SystemUiHiderBase mSystemUiHider;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +67,10 @@ public class FullscreenActivity extends Activity {
 
     // Set up an instance of SystemUiHider to control the system UI for
     // this activity.
-    mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
+    mSystemUiHider = new SystemUiHiderBase(this, contentView, HIDER_FLAGS);
     mSystemUiHider.setup();
     mSystemUiHider
-        .setOnVisibilityChangeListener(new SystemUiHider.OnVisibilityChangeListener() {
+        .setOnVisibilityChangeListener(new SystemUiHiderBase.OnVisibilityChangeListener() {
           // Cached values.
           int mControlsHeight;
           int mShortAnimTime;
