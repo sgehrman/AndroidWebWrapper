@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.sgehrman.androidwebwrapper.util.SystemUiHider;
@@ -53,10 +54,15 @@ public class FullscreenActivity extends Activity {
     setContentView(R.layout.activity_fullscreen);
 
     final View controlsView = findViewById(R.id.fullscreen_content_controls);
-    final WebView contentView = (WebView) findViewById(R.id.fullscreen_content);
+    final View contentView = findViewById(R.id.fullscreen_content);
 
-    contentView.getSettings().setJavaScriptEnabled(true);
-    contentView.loadUrl("http://learn.code.org/hoc/1");
+    final WebView webView = (WebView) findViewById(R.id.fullscreen_content);
+    WebSettings settings = webView.getSettings();
+    settings.setJavaScriptEnabled(true);
+    settings.setUseWideViewPort(true);
+    settings.setLoadWithOverviewMode(true);
+
+    webView.loadUrl("http://learn.code.org/hoc/1");
 
     // Set up an instance of SystemUiHider to control the system UI for
     // this activity.
