@@ -50,9 +50,10 @@ public class FullscreenActivity extends Activity {
     settings.setJavaScriptEnabled(true);
     settings.setUseWideViewPort(true);
     settings.setLoadWithOverviewMode(true);
-    webView.setWebViewClient(new WebViewClient());
+    webView.setWebViewClient(new MyWebViewClient());
 
-    webView.loadUrl("http://learn.code.org/hoc/1");
+//      webView.loadUrl("http://learn.code.org/hoc/1");
+      webView.loadUrl("http://www.slatercenter.com/products/screen");
 
     // Set up an instance of SystemUiHider to control the system UI for
     // this activity.
